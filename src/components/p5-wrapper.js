@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from 'react'
-import p5 from 'p5'
 
 function P5Wrapper(props) {
   let { sketch } = props
@@ -7,6 +6,9 @@ function P5Wrapper(props) {
   let p5Instance = null
 
   useEffect(() => {
+    // hack to import p5 because SSR
+    const p5 = require('p5')
+
     p5Instance = new p5(sketch, p5Wrapper.current)
   }, [])
 
