@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import RefreshButton from './refresh-button'
-import PlayPauseButton from './play-pause-button'
-import StopButton from './stop-button'
+import * as Icons from './icons'
+import RoundButton from './round-button'
 
 function ControlPanel(props) {
   let {
@@ -17,13 +16,24 @@ function ControlPanel(props) {
 
   return (
     <Wrapper extraCss={extraCss}>
-      <RefreshButton onClick={refreshGameOfLife} />
-      <PlayPauseButton
-        extraCss={'margin-left: 5px;'}
-        playing={gameOfLifePlaying}
+      <RoundButton onClick={refreshGameOfLife}>
+        <Icons.Refresh size={20} />
+      </RoundButton>
+
+      <RoundButton
+        extraCss="margin-left: 5px;"
         onClick={onClickPlayPauseButton}
-      />
-      <StopButton extraCss="margin-left: 5px;" onClick={onClickStopButton} />
+      >
+        {gameOfLifePlaying ? (
+          <Icons.Pause size={20} />
+        ) : (
+          <Icons.Play size={20} />
+        )}
+      </RoundButton>
+
+      <RoundButton extraCss="margin-left: 5px;" onClick={onClickStopButton}>
+        <Icons.Stop size={20} />
+      </RoundButton>
     </Wrapper>
   )
 
