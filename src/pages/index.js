@@ -20,6 +20,7 @@ function HomePage(props) {
       <P5Wrapper
         sketch={gameOfLifeSketch}
         exposeSketchCustomProps={handleExposeSketchCustomProps}
+        setStateToRedux={setGameOfLifeState}
       />
     </Wrapper>
   )

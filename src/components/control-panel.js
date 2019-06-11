@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import * as Icons from './icons'
@@ -7,12 +7,12 @@ import RoundButton from './round-button'
 function ControlPanel(props) {
   let {
     extraCss,
+    gameOfLifePlaying,
     refreshGameOfLife,
     playGameOfLife,
     pauseGameOfLife,
     stopGameOfLife,
   } = props
-  let [gameOfLifePlaying, setGameOfLifePlaying] = useState(true)
 
   return (
     <Wrapper extraCss={extraCss}>
@@ -43,12 +43,10 @@ function ControlPanel(props) {
     } else {
       playGameOfLife()
     }
-    setGameOfLifePlaying(!gameOfLifePlaying)
   }
 
   function onClickStopButton() {
     stopGameOfLife()
-    setGameOfLifePlaying(false)
   }
 }
 
@@ -60,6 +58,7 @@ const Wrapper = styled.div`
 
 export default connect(
   (state, ownProps) => ({
+    gameOfLifePlaying: state.gameOfLife.playing,
     refreshGameOfLife: state.gameOfLife.refresh,
     playGameOfLife: state.gameOfLife.play,
     pauseGameOfLife: state.gameOfLife.pause,

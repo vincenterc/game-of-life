@@ -1,6 +1,7 @@
 import { SET_GAME_OF_LIFE_STATE } from './action-types'
 
 const initialState = {
+  playing: false,
   refresh: () => {},
   play: () => {},
   pause: () => {},

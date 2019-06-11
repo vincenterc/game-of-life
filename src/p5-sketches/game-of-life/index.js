@@ -2,6 +2,11 @@ import GOL from './gol'
 
 export default function sketch(p) {
   let gol
+  let setStateToRedux
+
+  p.setSketchProps = props => {
+    if (props.setStateToRedux) setStateToRedux = props.setStateToRedux
+  }
 
   p.customProps = {}
 
@@ -11,14 +16,17 @@ export default function sketch(p) {
   }
 
   p.customProps.play = function() {
+    setStateToRedux({ playing: true })
     p.loop()
   }
 
   p.customProps.pause = function() {
+    setStateToRedux({ playing: false })
     p.noLoop()
   }
 
   p.customProps.stop = function() {
+    setStateToRedux({ playing: false })
     p.noLoop()
     gol.clear()
     gol.display(p)
