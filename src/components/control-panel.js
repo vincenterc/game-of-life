@@ -3,9 +3,16 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import RefreshButton from './refresh-button'
 import PlayPauseButton from './play-pause-button'
+import StopButton from './stop-button'
 
 function ControlPanel(props) {
-  let { extraCss, refreshGameOfLife, playGameOfLife, pauseGameOfLife } = props
+  let {
+    extraCss,
+    refreshGameOfLife,
+    playGameOfLife,
+    pauseGameOfLife,
+    stopGameOfLife,
+  } = props
   let [gameOfLifePlaying, setGameOfLifePlaying] = useState(true)
 
   return (
@@ -16,6 +23,7 @@ function ControlPanel(props) {
         playing={gameOfLifePlaying}
         onClick={onClickPlayPauseButton}
       />
+      <StopButton extraCss="margin-left: 5px;" onClick={onClickStopButton} />
     </Wrapper>
   )
 
@@ -26,6 +34,11 @@ function ControlPanel(props) {
       playGameOfLife()
     }
     setGameOfLifePlaying(!gameOfLifePlaying)
+  }
+
+  function onClickStopButton() {
+    stopGameOfLife()
+    setGameOfLifePlaying(false)
   }
 }
 
@@ -40,6 +53,7 @@ export default connect(
     refreshGameOfLife: state.gameOfLife.refresh,
     playGameOfLife: state.gameOfLife.play,
     pauseGameOfLife: state.gameOfLife.pause,
+    stopGameOfLife: state.gameOfLife.stop,
   }),
   null
 )(ControlPanel)

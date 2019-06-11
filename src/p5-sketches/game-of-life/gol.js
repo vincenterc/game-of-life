@@ -48,6 +48,12 @@ class GOL {
     })
   }
 
+  clear() {
+    this.board.forEach((column, i) =>
+      column.forEach((cell, j) => cell.setState(0))
+    )
+  }
+
   generate() {
     this.board.forEach(column => column.forEach(cell => cell.saveState()))
 

@@ -18,6 +18,12 @@ export default function sketch(p) {
     p.noLoop()
   }
 
+  p.customProps.stop = function() {
+    p.noLoop()
+    gol.clear()
+    gol.display(p)
+  }
+
   p.setup = function() {
     p.createCanvas(p.windowWidth, p.windowHeight)
     p.background(255)

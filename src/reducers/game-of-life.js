@@ -4,6 +4,7 @@ const initialState = {
   refresh: () => {},
   play: () => {},
   pause: () => {},
+  stop: () => {},
 }
 
 export default function(state = initialState, { type, payload }) {
