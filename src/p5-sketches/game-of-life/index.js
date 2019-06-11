@@ -7,6 +7,15 @@ export default function sketch(p) {
 
   p.customProps.refresh = function() {
     gol.refresh(p)
+    gol.display(p)
+  }
+
+  p.customProps.play = function() {
+    p.loop()
+  }
+
+  p.customProps.pause = function() {
+    p.noLoop()
   }
 
   p.setup = function() {

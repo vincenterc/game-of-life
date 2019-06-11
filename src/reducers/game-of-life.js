@@ -2,6 +2,8 @@ import { SET_GAME_OF_LIFE_STATE } from './action-types'
 
 const initialState = {
   refresh: () => {},
+  play: () => {},
+  pause: () => {},
 }
 
 export default function(state = initialState, { type, payload }) {
