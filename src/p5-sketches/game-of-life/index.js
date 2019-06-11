@@ -48,6 +48,7 @@ export default function sketch(p) {
       gol.display(p)
     })
     p.background(255)
+    p.noLoop()
 
     gol = new GOL(p)
   }
