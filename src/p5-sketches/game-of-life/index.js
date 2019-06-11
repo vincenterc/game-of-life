@@ -25,7 +25,20 @@ export default function sketch(p) {
   }
 
   p.setup = function() {
-    p.createCanvas(p.windowWidth, p.windowHeight)
+    let canvas = p.createCanvas(p.windowWidth, p.windowHeight)
+    canvas.mouseClicked(() => {
+      let column = Math.floor(p.mouseX / gol.w)
+      let row = Math.floor(p.mouseY / gol.w)
+      let cell = gol.board[column][row]
+
+      if (cell.state === 1) {
+        cell.setState(0)
+      } else if (cell.state === 0) {
+        cell.setState(1)
+      }
+
+      gol.display(p)
+    })
     p.background(255)
 
     gol = new GOL(p)
