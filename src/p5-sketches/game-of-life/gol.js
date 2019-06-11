@@ -31,6 +31,23 @@ class GOL {
     )
   }
 
+  refresh(p) {
+    this.board.forEach((column, i) => {
+      column.forEach((cell, j) => {
+        if (
+          i === 0 ||
+          i === this.columns - 1 ||
+          j === 0 ||
+          j === this.rows - 1
+        ) {
+          cell.setState(0)
+        } else {
+          cell.setState(Math.floor(p.random(2)))
+        }
+      })
+    })
+  }
+
   generate() {
     this.board.forEach(column => column.forEach(cell => cell.saveState()))
 
