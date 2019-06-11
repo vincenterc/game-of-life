@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 
 function P5Wrapper(props) {
-  let { sketch } = props
+  let { sketch, exposeSketchCustomProps = () => {} } = props
   let p5Wrapper = useRef(null)
   let p5Instance = null
 
@@ -17,6 +17,10 @@ function P5Wrapper(props) {
       p5Instance.setSketchProps(props)
     }
   })
+
+  useEffect(() => {
+    exposeSketchCustomProps(p5Instance.customProps)
+  }, [])
 
   return <div ref={p5Wrapper} />
 }
